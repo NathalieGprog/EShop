@@ -1,4 +1,4 @@
-package fr.adaming.gestionCommande;
+package fr.adaming.entite;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,9 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import fr.adaming.entite.Commande;
-import fr.adaming.entite.Produit;
 
 @Entity
 @Table(name="lignesCommandes")

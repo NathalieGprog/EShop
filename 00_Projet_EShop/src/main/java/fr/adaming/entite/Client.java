@@ -32,7 +32,7 @@ public class Client implements Serializable {
 	private String tel ;
 	
 	@OneToMany(mappedBy="client", cascade= CascadeType.ALL)
-	private List<Commande> commande;
+	private List<Commande> lCommandes;
 	
 	/**
 	 * Constructeur vide
@@ -129,17 +129,17 @@ public class Client implements Serializable {
 		this.tel = tel;
 	}
 	/**
-	 * @return the commande
+	 * @return the lCommandes
 	 */
-	public List<Commande> getCommande() {
-		return commande;
+	public List<Commande> getlCommandes() {
+		return lCommandes;
 	}
 	/**
-	 * @param commande the commande to set
+	 * @param lCommandes the lCommandes to set
 	 */
-	public void setCommande(List<Commande> commande) {
-		this.commande = commande;
+	public void setlCommandes(List<Commande> lCommandes) {
+		this.lCommandes = lCommandes;
 	}
-	
+
 	
 }

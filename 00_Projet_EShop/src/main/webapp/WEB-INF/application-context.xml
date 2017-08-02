@@ -31,7 +31,7 @@
 		<!-- Injection de la dataSource -->
 		<property name="dataSource" ref="dataSourceBean"/>
 		<!-- Specifier les entités annotées grace à JPA -->
-		<property name="packagesToScan" value="fr.adaming.model"/>
+		<property name="packagesToScan" value="fr.adaming.entite"/>
 		
 		<!-- Specifier les propriétés de hibernate -->
 		<property name="hibernateProperties">

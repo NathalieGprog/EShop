@@ -1,8 +1,8 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.Collection;
 
-public interface IGeneriqueDao<T> {
+public interface IGeneriqueService<T> {
 
 	public void ajouter(T t);
 	public T obtenirTous();

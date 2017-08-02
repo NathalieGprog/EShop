@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import fr.adaming.gestionCommande.LigneCommande;
-
 @Entity
 @Table(name="produits")
 public class Produit {
@@ -27,13 +25,14 @@ public class Produit {
 	private String description ;
 	private double prix ;
 	private int quantite ;
+	@Column(nullable = false, columnDefinition = "TINYINT", length = 1)
 	private boolean selectionne ;
 	
 	@ManyToOne
 	@JoinColumn(name="categorie_id", referencedColumnName="id_categorie")
 	private Categorie categorie;
 	
-	@OneToMany(mappedBy="produits", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="produit", cascade=CascadeType.ALL)
 	private List<LigneCommande> lLignesCommandes;
 	/**
 	 * Constructeur vide

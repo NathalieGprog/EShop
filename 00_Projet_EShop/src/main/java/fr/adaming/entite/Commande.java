@@ -17,8 +17,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import fr.adaming.gestionCommande.LigneCommande;
-
 @Entity
 @Table(name="commandes")
 public class Commande implements Serializable{
@@ -36,7 +34,7 @@ public class Commande implements Serializable{
 	@Column(name="date_commande")
 	private Date dateCommande ;
 	
-	@OneToMany(mappedBy="commandes", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="commande", cascade=CascadeType.ALL)
 	private List<LigneCommande> lLignesCommandes ;
 	
 	@ManyToOne
