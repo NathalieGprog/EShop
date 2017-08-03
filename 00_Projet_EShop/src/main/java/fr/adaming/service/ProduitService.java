@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IGeneriqueDao;
 import fr.adaming.dao.ProduitDaoImpl;
 import fr.adaming.entite.Produit;
 
@@ -14,23 +15,23 @@ import fr.adaming.entite.Produit;
 public class ProduitService implements IGeneriqueService<Produit>{
 
 	@Autowired
-	private ProduitDaoImpl produitDao;
+	private IGeneriqueDao<Produit> produitDaoImpl;
 	/**
 	 * @param produitDao the produitDao to set
 	 */
 	public void setProduitDao(ProduitDaoImpl produitDao) {
-		this.produitDao = produitDao;
+		this.produitDaoImpl = produitDao;
 	}
 	
 
 	@Override
 	public void ajouter(Produit produit) {
-		produitDao.ajouter(produit);
+		produitDaoImpl.ajouter(produit);
 	}
 
 	@Override
 	public List<Produit> obtenirTous() {
-		return produitDao.obtenirTous();
+		return (List<Produit>) produitDaoImpl.obtenirTous();
 	}
 
 	@Override

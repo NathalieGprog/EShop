@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.CategorieDaoImpl;
+import fr.adaming.dao.IGeneriqueDao;
 import fr.adaming.entite.Categorie;
 
 @Service("categorieServiceBean")
@@ -14,23 +15,23 @@ import fr.adaming.entite.Categorie;
 public class CategorieService implements IGeneriqueService<Categorie>{
 
 	@Autowired
-	private CategorieDaoImpl categorieDao;
+	private IGeneriqueDao<Categorie> categorieDaoImpl;
 	/**
 	 * @param categorieDao the categorieDao to set
 	 */
 	public void setCategorieDao(CategorieDaoImpl categorieDao) {
-		this.categorieDao = categorieDao;
+		this.categorieDaoImpl = categorieDao;
 	}
 	
 
 	@Override
 	public void ajouter(Categorie categorie) {
-		categorieDao.ajouter(categorie);
+		categorieDaoImpl.ajouter(categorie);
 	}
 
 	@Override
 	public List<Categorie> obtenirTous() {
-		return categorieDao.obtenirTous();
+		return (List<Categorie>) categorieDaoImpl.obtenirTous();
 	}
 
 	@Override
