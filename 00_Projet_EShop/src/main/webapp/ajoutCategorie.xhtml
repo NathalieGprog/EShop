@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Page Ajout</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<p:outputLabel for="idNomCategorie" value="Nom Categorie : " />
+			<p:inputText id="idNomCategorie"
+				value="#{categorieMB.categorie.nomCategorie}" />
+
+			<p:outputLabel for="idDecription" value="Decription : " />
+			<p:inputText id="idDecription"
+				value="#{categorieMB.categorie.description}" />
+
+		</h:panelGrid>
+
+		<p:commandButton value="ajouter" action="#{categorieMB.ajouterCategorie}" />
+
+	</h:form>
+
+</h:body>
+</html>

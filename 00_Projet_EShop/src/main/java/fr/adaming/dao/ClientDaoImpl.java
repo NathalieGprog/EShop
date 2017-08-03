@@ -27,7 +27,7 @@ public class ClientDaoImpl implements IGeneriqueDao<Client>{
 	}
 
 	@Override
-	public Client obtenirTous() {
+	public Collection<Client> obtenirTous() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -45,7 +45,7 @@ public class ClientDaoImpl implements IGeneriqueDao<Client>{
 	}
 
 	@Override
-	public Collection<Client> obtenirUn(int id) {
+	public Client obtenirUn(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

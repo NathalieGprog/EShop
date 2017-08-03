@@ -3,6 +3,7 @@ package fr.adaming.ManagedBean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -31,7 +32,11 @@ public class CategorieManagedBean implements Serializable {
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
 	}
-
+	
+	@PostConstruct // la méthode sera exécutée après
+	public void init() {
+		this.lCategories = (List<Categorie>) categorieService.obtenirTous();
+	}
 	/*************************************************
 	 * Setters et Getters
 	 *************************************************/
@@ -80,8 +85,8 @@ public class CategorieManagedBean implements Serializable {
 
 	public String ajouterCategorie() {
 		categorieService.ajouter(categorie);
-		// this.lCategories = categorieService.obtenirTous();
-		return "ajout";
+		this.lCategories = (List<Categorie>) categorieService.obtenirTous();
+		return "ajoutCategorie";
 
 	}
 

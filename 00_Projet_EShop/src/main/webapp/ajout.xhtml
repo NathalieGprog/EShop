@@ -14,28 +14,29 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<p:outputLabel for="idDesignation" value="Designation : " />
-			<p:inputText id="idDesignation" value="#{produitMB.produit.designation}" />
+			<p:inputText id="idDesignation"
+				value="#{produitMB.produit.designation}" />
 
 			<p:outputLabel for="idDecription" value="Decription : " />
-			<p:inputText id="idDecription" value="#{produitMB.produit.description}" />
+			<p:inputText id="idDecription"
+				value="#{produitMB.produit.description}" />
 
 			<p:outputLabel for="idPrix" value="Prix : " />
 			<p:inputText id="idPrix" value="#{produitMB.produit.prix}" />
 
 			<p:outputLabel for="idQuantite" value="Quantité : " />
 			<p:inputText id="idQuantite" value="#{produitMB.produit.quantite}" />
-			
+
 			<p:outputLabel for="idSelectionne" value="Selectionné : " />
-			<p:inputText id="idSelectionne" value="#{produitMB.produit.selectionne}" />
-			
-			<p:outputLabel for="idSelectionne" value="Selectionné : " />
-			<p:inputText id="idSelectionne" value="#{produitMB.produit.selectionne}" />
-			
-			<p:outputLabel for="cat" value="Grouping: " />
-        	<p:selectOneMenu id="cat" value="#{categorieMB.categorie}">
-            <f:selectItem itemLabel="Choisir une catégorie" itemValue="" />
-            <f:selectItems value="#{categorieMB.lCategories}" />
-       	 </p:selectOneMenu>
+			<p:inputText id="idSelectionne"
+				value="#{produitMB.produit.selectionne}" />
+
+
+			<p:outputLabel for="cat" value="Catégorie : " />
+			<p:selectOneMenu id="cat" value="#{categorieMB.categorie.nomCategorie}">
+				<f:selectItem itemLabel="Choisir une catégorie" itemValue="" />
+				<f:selectItems value="#{categorieMB.lCategories}" />
+			</p:selectOneMenu>
 
 		</h:panelGrid>
 

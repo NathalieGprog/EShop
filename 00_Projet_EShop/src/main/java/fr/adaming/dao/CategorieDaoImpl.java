@@ -1,7 +1,8 @@
 package fr.adaming.dao;
 
-import java.util.Collection;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,12 @@ public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 	}
 
 	@Override
-	public Categorie obtenirTous() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Categorie> obtenirTous() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Categorie"; 
+		Query query = s.createQuery(req);
+		List<Categorie> listeCategorie = query.list();
+		return listeCategorie;
 	}
 
 	@Override
@@ -47,9 +51,10 @@ public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 	}
 
 	@Override
-	public Collection<Categorie> obtenirUn(int id) {
+	public Categorie obtenirUn(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -160,8 +160,35 @@ public class Produit {
 	public void setlLignesCommandes(List<LigneCommande> lLignesCommandes) {
 		this.lLignesCommandes = lLignesCommandes;
 	}
-
+	/**
+	 * @return the categorie
+	 */
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	
+	
+	
+	
+	
+	
+//	/* (non-Javadoc)
+//	 * @see java.lang.Object#toString()
+//	 */
+//	@Override
+//	public String toString() {
+//		return "Produit [designation=" + designation + ", description=" + description + ", prix=" + prix + ", quantite="
+//				+ quantite + ", selectionne=" + selectionne + ", categorie=" + categorie + ", lLignesCommandes="
+//				+ lLignesCommandes + "]";
+//	}
+//
+//	
 	
 	
 }

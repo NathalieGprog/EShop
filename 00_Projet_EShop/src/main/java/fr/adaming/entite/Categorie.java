@@ -108,7 +108,18 @@ public class Categorie implements Serializable{
 	public void setlProduits(List<Produit> lProduits) {
 		this.lProduits = lProduits;
 	}
-
 	
+	
+	
+//	
+//	
+//	/* (non-Javadoc)
+//	 * @see java.lang.Object#toString()
+//	 */
+//	@Override
+//	public String toString() {
+//		return "Categorie [nomCategorie=" + nomCategorie + ", description=" + description + ", lProduits=" + lProduits
+//				+ "]";
+//	}
 	
 }

@@ -1,7 +1,8 @@
 package fr.adaming.dao;
 
-import java.util.Collection;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,16 @@ public class ProduitDaoImpl implements IGeneriqueDao<Produit> {
 		Session s = sf.getCurrentSession();
 		s.save(produit);
 	}
-
+	
 	@Override
-	public Produit obtenirTous() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> obtenirTous() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Produit"; 
+		Query query = s.createQuery(req);
+		List<Produit> listeProduit = query.list();
+		return listeProduit;
 	}
-
+	
 	@Override
 	public boolean modifier(Produit produit) {
 		// TODO Auto-generated method stub
@@ -47,9 +51,11 @@ public class ProduitDaoImpl implements IGeneriqueDao<Produit> {
 	}
 
 	@Override
-	public Collection<Produit> obtenirUn(int id) {
+	public Produit obtenirUn(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

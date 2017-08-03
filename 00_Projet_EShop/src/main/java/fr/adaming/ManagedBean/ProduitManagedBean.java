@@ -3,10 +3,12 @@ package fr.adaming.ManagedBean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
 import fr.adaming.service.IGeneriqueService;
 
@@ -20,6 +22,7 @@ public class ProduitManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Produit produit;
+	private Categorie categorie;
 	private List<Produit> lProduits;
 
 	@ManagedProperty(value = "#{produitServiceBean}")
@@ -30,8 +33,13 @@ public class ProduitManagedBean implements Serializable {
 	 */
 	public ProduitManagedBean() {
 		this.produit = new Produit();
+		this.categorie = new Categorie();
 	}
-
+	
+	@PostConstruct // la méthode sera exécutée après
+	public void init() {
+		this.lProduits = (List<Produit>) produitService.obtenirTous();
+	}
 	/*************************************************
 	 * Setters et Getters
 	 *************************************************/
@@ -79,8 +87,10 @@ public class ProduitManagedBean implements Serializable {
 	 *************************************************/
 
 	public String ajouterProduit() {
+		System.out.println("cat " + categorie +" produit" + produit);
+		produit.setCategorie(this.categorie);
 		produitService.ajouter(produit);
-		// this.lProduits = produitService.obtenirTous();
+		this.lProduits = (List<Produit>) produitService.obtenirTous();
 		return "ajout";
 
 	}

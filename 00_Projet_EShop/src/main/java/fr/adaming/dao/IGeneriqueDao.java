@@ -5,9 +5,9 @@ import java.util.Collection;
 public interface IGeneriqueDao<T> {
 
 	public void ajouter(T t);
-	public T obtenirTous();
+	public Collection<T> obtenirTous();
 	public boolean modifier(T t);
 	public boolean supprimer(T t);
-	public Collection<T> obtenirUn(int id);
+	public T obtenirUn(int id);
 	
 }

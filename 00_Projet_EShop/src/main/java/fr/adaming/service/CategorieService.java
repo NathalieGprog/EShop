@@ -1,6 +1,6 @@
 package fr.adaming.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +29,8 @@ public class CategorieService implements IGeneriqueService<Categorie>{
 	}
 
 	@Override
-	public Categorie obtenirTous() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Categorie> obtenirTous() {
+		return categorieDao.obtenirTous();
 	}
 
 	@Override
@@ -46,12 +45,14 @@ public class CategorieService implements IGeneriqueService<Categorie>{
 		return false;
 	}
 
+
 	@Override
-	public Collection<Categorie> obtenirUn(int id) {
+	public Categorie obtenirUn(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+
 
 	
 	
