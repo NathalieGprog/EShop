@@ -12,7 +12,7 @@ import fr.adaming.entite.Produit;
 
 @Service("produitServiceBean")
 @Transactional
-public class ProduitService implements IGeneriqueService<Produit>{
+public class ProduitService implements IProduitService {
 
 	@Autowired
 	private IGeneriqueDao<Produit> produitDaoImpl;

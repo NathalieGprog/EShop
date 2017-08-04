@@ -12,7 +12,7 @@ import fr.adaming.entite.Categorie;
 
 @Service("categorieServiceBean")
 @Transactional
-public class CategorieService implements IGeneriqueService<Categorie>{
+public class CategorieService implements ICategorieService{
 
 	@Autowired
 	private IGeneriqueDao<Categorie> categorieDaoImpl;
