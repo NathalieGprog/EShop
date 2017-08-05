@@ -1,11 +1,15 @@
 package fr.adaming.dao;
 
 import java.util.Collection;
+import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Client;
 
 @Repository
@@ -22,32 +26,36 @@ public class ClientDaoImpl implements IGeneriqueDao<Client>{
 	
 	@Override
 	public void ajouter(Client client) {
-		// TODO Auto-generated method stub
-		
+		Session s = sf.getCurrentSession();
+		s.save(client);
 	}
 
 	@Override
-	public Collection<Client> obtenirTous() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Client> obtenirTous() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Client"; 
+		Query query = s.createQuery(req);
+		@SuppressWarnings("unchecked")
+		List<Client> listeClient = query.list();
+		return listeClient;
 	}
 
 	@Override
-	public boolean modifier(Client client) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Client client) {
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(client);
 	}
 
 	@Override
-	public boolean supprimer(Client client) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(Client client) {
+		Session s =  sf.getCurrentSession();
+		s.delete(client);
 	}
 
 	@Override
 	public Client obtenirUn(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (Client) s.get(Client.class, id);
 	}
 
 }

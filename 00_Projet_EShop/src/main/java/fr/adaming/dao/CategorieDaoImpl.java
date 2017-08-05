@@ -34,26 +34,27 @@ public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Categorie"; 
 		Query query = s.createQuery(req);
+		@SuppressWarnings("unchecked")
 		List<Categorie> listeCategorie = query.list();
 		return listeCategorie;
 	}
 
 	@Override
-	public boolean modifier(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Categorie categorie) {
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(categorie);
 	}
 
 	@Override
-	public boolean supprimer(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(Categorie categorie) {
+		Session s =  sf.getCurrentSession();
+		s.delete(categorie);
 	}
 
 	@Override
 	public Categorie obtenirUn(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (Categorie) s.get(Categorie.class, id);
 	}
 
 

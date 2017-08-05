@@ -35,22 +35,19 @@ public class CategorieService implements ICategorieService{
 	}
 
 	@Override
-	public boolean modifier(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Categorie categorie) {
+		categorieDaoImpl.modifier(categorie);
 	}
 
 	@Override
-	public boolean supprimer(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(Categorie categorie) {
+		categorieDaoImpl.supprimer(categorie);
 	}
 
 
 	@Override
 	public Categorie obtenirUn(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return categorieDaoImpl.obtenirUn(id);
 	}
 
 

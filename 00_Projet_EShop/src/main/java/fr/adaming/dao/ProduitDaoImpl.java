@@ -34,26 +34,27 @@ public class ProduitDaoImpl implements IGeneriqueDao<Produit> {
 		Session s = sf.getCurrentSession();
 		String req = "FROM Produit"; 
 		Query query = s.createQuery(req);
+		@SuppressWarnings("unchecked")
 		List<Produit> listeProduit = query.list();
 		return listeProduit;
 	}
 	
 	@Override
-	public boolean modifier(Produit produit) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Produit produit) {
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(produit);
 	}
 
 	@Override
-	public boolean supprimer(Produit produit) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(Produit produit) {
+		Session s =  sf.getCurrentSession();
+		s.delete(produit);
 	}
 
 	@Override
 	public Produit obtenirUn(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		return (Produit) s.get(Produit.class, id);
 	}
 
 
