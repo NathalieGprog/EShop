@@ -2,21 +2,28 @@ package fr.adaming.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import fr.adaming.dao.CategorieDaoImpl;
 import fr.adaming.dao.IGeneriqueDao;
+import fr.adaming.dao.ProduitDaoImpl;
 import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
+import fr.adaming.service.CategorieService;
 import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
+import fr.adaming.service.ProduitService;
+
 
 public class TestProduitService {
 	
-	private IProduitService produitService;
-	private IGeneriqueDao<Produit> pDao;
+	private IProduitService produitService = new ProduitService();
+	private IGeneriqueDao<Produit> pDao = new ProduitDaoImpl();
 	private Produit produit1 ;
 	private Produit produit2 ;
 	private Produit produit3 ;
@@ -27,12 +34,12 @@ public class TestProduitService {
 	private Produit produit8 ;
 	private Produit produit9 ;
 	private Produit produit10 ;
-	private List<Produit> lProduits1;
-	private List<Produit> lProduits2;
-	private List<Produit> lProduits3;
+	private List<Produit> lProduits1 = new ArrayList<Produit>();
+	private List<Produit> lProduits2 = new ArrayList<Produit>();
+	private List<Produit> lProduits3 = new ArrayList<Produit>();
 	
-	private ICategorieService categorieService;
-	private IGeneriqueDao<Categorie> cDao;
+	private ICategorieService categorieService = new CategorieService();
+	private IGeneriqueDao<Categorie> cDao = new CategorieDaoImpl();
 	private Categorie categorie1 ;
 	private Categorie categorie2 ;
 	private Categorie categorie3 ;
@@ -40,6 +47,7 @@ public class TestProduitService {
 	private Categorie categorie5 ;
 	
 
+	
 	public void initObjet(){
 		System.out.println("coucou");
 		produit1 = new Produit("Io", "couleur souffre", 10000000, 1, false);
@@ -57,7 +65,9 @@ public class TestProduitService {
 		categorie2 = new Categorie("Satellite","Corps céleste de petite taille");
 		categorie3 = new Categorie("Etoile","Corps céleste abritant des réactions thermonucléaires");
 		
+		System.out.println(produit1);
 		lProduits1.add(produit1);
+		System.out.println(lProduits1);
 		lProduits1.add(produit2);
 		lProduits1.add(produit3);
 		lProduits1.add(produit4);
@@ -74,25 +84,26 @@ public class TestProduitService {
 		categorie2.setlProduits(lProduits2);
 		categorie3.setlProduits(lProduits3);
 		
-		cDao.ajouter(categorie1);
-		cDao.ajouter(categorie2);
-		cDao.ajouter(categorie3);
+		System.out.println(categorie1);
+		categorieService.ajouter(categorie1);
+		categorieService.ajouter(categorie2);
+		categorieService.ajouter(categorie3);
 		
-		pDao.ajouter(produit1);
-		pDao.ajouter(produit2);
-		pDao.ajouter(produit3);
-		pDao.ajouter(produit4);
-		pDao.ajouter(produit5);
-		pDao.ajouter(produit6);
-		pDao.ajouter(produit7);
-		pDao.ajouter(produit8);
-		pDao.ajouter(produit9);
-		pDao.ajouter(produit10);
+		produitService.ajouter(produit1);
+		produitService.ajouter(produit2);
+		produitService.ajouter(produit3);
+		produitService.ajouter(produit4);
+		produitService.ajouter(produit5);
+		produitService.ajouter(produit6);
+		produitService.ajouter(produit7);
+		produitService.ajouter(produit8);
+		produitService.ajouter(produit9);
+		produitService.ajouter(produit10);
 	}
 	
-	@Test
+	
 	public void obtenirTousProduitsParCategorieTest(){
-		Produit p1 = pDao.obtenirUn(1);
+		Produit p1 = produitService.obtenirUn(1);
 		assertEquals(produit1, p1);
 		
 	}
