@@ -33,15 +33,13 @@ public class ClientDaoImpl implements IGeneriqueDao<Client>{
 	}
 
 	@Override
-	public boolean modifier(Client client) {
+	public void modifier(Client client) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
-	public boolean supprimer(Client client) {
+	public void supprimer(int id) {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

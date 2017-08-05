@@ -6,8 +6,8 @@ public interface IGeneriqueDao<T> {
 
 	public void ajouter(T t);
 	public Collection<T> obtenirTous();
-	public boolean modifier(T t);
-	public boolean supprimer(T t);
+	public void modifier(T t);
+	public void supprimer(int id);
 	public T obtenirUn(int id);
 	
 }

@@ -14,15 +14,16 @@ import fr.adaming.entite.Categorie;
 public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 
 	@Autowired
-	private SessionFactory sf ;
+	private SessionFactory sf;
+
 	/**
-	 * @param sf the sf to set
+	 * @param sf
+	 *            the sf to set
 	 */
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
 
-	
 	@Override
 	public void ajouter(Categorie categorie) {
 		Session s = sf.getCurrentSession();
@@ -32,29 +33,31 @@ public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 	@Override
 	public List<Categorie> obtenirTous() {
 		Session s = sf.getCurrentSession();
-		String req = "FROM Categorie"; 
+		String req = "FROM Categorie";
 		Query query = s.createQuery(req);
+		@SuppressWarnings("unchecked")
 		List<Categorie> listeCategorie = query.list();
 		return listeCategorie;
 	}
 
 	@Override
-	public boolean modifier(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Categorie categorie) {
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(categorie);
 	}
 
 	@Override
-	public boolean supprimer(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(int id) {
+		Session s = sf.getCurrentSession();
+		Categorie c = (Categorie) s.get(Categorie.class, id);
+		s.delete(c);
 	}
 
 	@Override
 	public Categorie obtenirUn(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		Categorie c = (Categorie) s.get(Categorie.class, id);
+		return c;
 	}
-
 
 }
