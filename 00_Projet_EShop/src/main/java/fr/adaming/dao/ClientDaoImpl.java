@@ -36,8 +36,8 @@ public class ClientDaoImpl implements IGeneriqueDao<Client> {
 		String req = "FROM Client";
 		Query query = s.createQuery(req);
 		@SuppressWarnings("unchecked")
-		List<Client> listeClient = query.list();
-		return listeClient;
+		List<Client> listeClients = query.list();
+		return listeClients;
 	}
 
 	@Override
