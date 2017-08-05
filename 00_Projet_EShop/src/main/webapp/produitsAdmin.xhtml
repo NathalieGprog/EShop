@@ -11,9 +11,29 @@
 	<ui:composition
 		template="/WEB-INF/templateAdmin/basicTemplateAdmin.xhtml">
 		<ui:define name="content">
-			<p:layoutUnit position="center" style=" text-align : center;">
-				<h3>Bienvenue dans PRODUITS</h3>
-			</p:layoutUnit>
+			<p:dataTable var="prod" value="#{produitMB.lProduits}">
+				<p:column headerText="Id">
+					<h:outputText value="#{prod.idProduit}" />
+				</p:column>
+
+				<p:column headerText="Designation">
+					<h:outputText value="#{prod.designation}" />
+				</p:column>
+
+				<p:column headerText="Description">
+					<h:outputText value="#{prod.description}" />
+				</p:column>
+				<p:column headerText="Prix">
+					<h:outputText value="#{prod.prix} €" />
+				</p:column>
+				<p:column headerText="Quantité">
+					<h:outputText value="#{prod.quantite}" />
+				</p:column>
+
+				<p:column headerText="Catégories">
+					<h:outputText value="#{prod.categorie.nomCategorie}" />
+				</p:column>
+			</p:dataTable>
 
 		</ui:define>
 	</ui:composition>

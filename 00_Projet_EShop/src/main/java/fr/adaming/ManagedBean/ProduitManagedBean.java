@@ -118,7 +118,11 @@ public class ProduitManagedBean implements Serializable {
 	/*************************************************
 	 * Les méthodes services
 	 *************************************************/
-
+	public String listeProduits() {
+		this.lProduits = (List<Produit>) produitService.obtenirTous();
+		return "produitsAdmin.xhtml";
+	}
+	
 	public String ajouterProduit() {
 		System.out.println("cat " + categorie +" produit" + produit);
 		produit.setCategorie(this.categorie);

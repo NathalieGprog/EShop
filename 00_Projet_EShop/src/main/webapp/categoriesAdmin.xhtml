@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
@@ -9,9 +10,40 @@
 	<ui:composition
 		template="/WEB-INF/templateAdmin/basicTemplateAdmin.xhtml">
 		<ui:define name="content">
-			<p:layoutUnit position="center" style=" text-align : center;">
-				<h3>Bienvenue dans CATEGORIES</h3>
-			</p:layoutUnit>
+			<h:form>
+				<!-- 	Ajouter catégorie -->
+				<p:commandButton icon="ui-icon-plus" action="ajoutCategorie" />
+				<!-- 	Rafraichir la liste Catégorie -->
+				<p:commandButton icon="ui-icon-refresh"
+					action="#{categorieMB.listeCategories}" />
+			</h:form>
+
+			<p:separator />
+<!-- 			<h:form> -->
+				<p:dataTable var="cat" value="#{categorieMB.lCategories}">
+					<p:column headerText="Id">
+						<h:outputText value="#{cat.idCategorie}" />
+					</p:column>
+
+					<p:column headerText="Nom">
+						<h:outputText value="#{cat.nomCategorie}" />
+					</p:column>
+
+					<p:column headerText="Description">
+						<h:outputText value="#{cat.description}" />
+					</p:column>
+
+<!-- 					<p:column headerText="Actions"> -->
+<!-- 						Modifier la catégorie -->
+<!-- 						<p:commandButton icon="ui-icon-bullet" -->
+<!-- 							action="#{categorieMB.modifierCategorie}" /> | -->
+<!-- 					<p:commandButton icon="ui-icon-trash" action="#" /> -->
+<!-- 					</p:column> -->
+				</p:dataTable>
+<!-- 			</h:form> -->
+			<p:separator />
+
+
 
 		</ui:define>
 	</ui:composition>

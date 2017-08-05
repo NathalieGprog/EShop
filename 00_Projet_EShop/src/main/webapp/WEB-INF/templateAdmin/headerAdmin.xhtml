@@ -20,10 +20,10 @@
 						icon="ui-icon-home">
 						<f:param name="i" value="0" />
 					</p:menuitem>
-					<p:menuitem value="Catégories" action="categoriesAdmin.xhtml">
+					<p:menuitem value="Catégories" action="#{categorieMB.listeCategories}">
 						<f:param name="i" value="1" />
 					</p:menuitem>
-					<p:menuitem value="Produits" action="produitsAdmin.xhtml">
+					<p:menuitem value="Produits" action="#{produitMB.listeProduits}">
 						<f:param name="i" value="2" />
 					</p:menuitem>
 					<p:menuitem value="Consultation" action="consultationAdmin.xhtml"
