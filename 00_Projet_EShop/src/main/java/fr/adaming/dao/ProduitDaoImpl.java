@@ -47,10 +47,9 @@ public class ProduitDaoImpl implements IGeneriqueDao<Produit> {
 	}
 
 	@Override
-	public void supprimer(int id) {
-		Session s = sf.getCurrentSession();
-		Produit p = (Produit) s.get(Produit.class, id);
-		s.delete(p);
+	public void supprimer(Produit produit) {
+		Session s =  sf.getCurrentSession();
+		s.delete(produit);
 	}
 
 	@Override

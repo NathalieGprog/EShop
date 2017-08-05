@@ -47,17 +47,15 @@ public class CategorieDaoImpl implements IGeneriqueDao<Categorie> {
 	}
 
 	@Override
-	public void supprimer(int id) {
+	public void supprimer(Categorie categorie) {
 		Session s = sf.getCurrentSession();
-		Categorie c = (Categorie) s.get(Categorie.class, id);
-		s.delete(c);
+		s.delete(categorie);
 	}
 
 	@Override
 	public Categorie obtenirUn(int id) {
 		Session s = sf.getCurrentSession();
-		Categorie c = (Categorie) s.get(Categorie.class, id);
-		return c;
+		return (Categorie) s.get(Categorie.class, id);
 	}
 
 }

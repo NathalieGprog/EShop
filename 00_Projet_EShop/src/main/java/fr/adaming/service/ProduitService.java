@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IGeneriqueDao;
 import fr.adaming.dao.ProduitDaoImpl;
+import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
 
 @Service("produitServiceBean")
@@ -35,21 +36,37 @@ public class ProduitService implements IProduitService {
 	}
 
 	@Override
-	public boolean modifier(Produit produit) {
-		// TODO Auto-generated method stub
-		return false;
+	public void modifier(Produit produit) {
+		produitDaoImpl.modifier(produit);
 	}
 
 	@Override
-	public boolean supprimer(Produit produit) {
-		// TODO Auto-generated method stub
-		return false;
+	public void supprimer(Produit produit) {
+		produitDaoImpl.supprimer(produit);
 	}
 
 	@Override
 	public Produit obtenirUn(int id) {
-		// TODO Auto-generated method stub
+		return produitDaoImpl.obtenirUn(id);
+	}
+
+
+	@Override
+	public List<Produit> obtenirTousProduitsParCategorie(Categorie t) {
+		
+		List<Produit> lProduits = (List<Produit>) produitDaoImpl.obtenirTous();
+		
+		for (Produit p : lProduits){
+			System.out.println(p.getCategorie());
+		}
 		return null;
+	}
+
+
+	@Override
+	public void ajouterProduitParCatégorie(Produit p, Categorie c) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
