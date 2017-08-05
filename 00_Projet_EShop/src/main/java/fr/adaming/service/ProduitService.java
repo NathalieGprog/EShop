@@ -1,5 +1,6 @@
 package fr.adaming.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,14 +53,23 @@ public class ProduitService implements IProduitService {
 
 
 	@Override
-	public List<Produit> obtenirTousProduitsParCategorie(Categorie t) {
+	public List<Produit> obtenirTousProduitsParCategorie(Categorie categorie) {
 		
 		List<Produit> lProduits = (List<Produit>) produitDaoImpl.obtenirTous();
-		
+		List<Produit> lProduitsParCat = new ArrayList<Produit>();
+		int i = 0;
 		for (Produit p : lProduits){
 			System.out.println(p.getCategorie());
+			if (categorie.equals(p.getCategorie())){
+				lProduitsParCat.add(p);
+				i++;
+			}
 		}
+		if (i>0){
+			return lProduitsParCat;
+		}else{
 		return null;
+		}
 	}
 
 

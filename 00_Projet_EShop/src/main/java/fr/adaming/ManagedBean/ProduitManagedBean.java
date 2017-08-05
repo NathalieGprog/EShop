@@ -10,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
+import fr.adaming.service.CategorieService;
 import fr.adaming.service.IGeneriqueService;
 
 @ManagedBean(name = "produitMB")
@@ -24,21 +25,24 @@ public class ProduitManagedBean implements Serializable {
 	private Produit produit;
 	private Categorie categorie;
 	private List<Produit> lProduits;
+	private List<Categorie> lCategorie;
 
 	@ManagedProperty(value = "#{produitServiceBean}")
 	private IGeneriqueService<Produit> produitService;
 
+//	private IGeneriqueService<Categorie> categorieService = new CategorieService();
 	/**
 	 * Constructeur vide
 	 */
 	public ProduitManagedBean() {
 		this.produit = new Produit();
-		this.categorie = new Categorie();
+//		this.categorie = new Categorie();
 	}
 	
 	@PostConstruct // la méthode sera exécutée après
 	public void init() {
 		this.lProduits = (List<Produit>) produitService.obtenirTous();
+//		this.lCategorie = (List<Categorie>) categorieService.obtenirTous();
 	}
 	/*************************************************
 	 * Setters et Getters
@@ -82,6 +86,35 @@ public class ProduitManagedBean implements Serializable {
 		this.lProduits = lProduits;
 	}
 
+		
+	/**
+	 * @return the categorie
+	 */
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+//	/**
+//	 * @return the lCategorie
+//	 */
+//	public List<Categorie> getlCategorie() {
+//		return lCategorie;
+//	}
+//
+//	/**
+//	 * @param lCategorie the lCategorie to set
+//	 */
+//	public void setlCategorie(List<Categorie> lCategorie) {
+//		this.lCategorie = lCategorie;
+//	}
+
 	/*************************************************
 	 * Les méthodes services
 	 *************************************************/
@@ -93,6 +126,16 @@ public class ProduitManagedBean implements Serializable {
 		this.lProduits = (List<Produit>) produitService.obtenirTous();
 		return "ajout";
 
+	}
+	
+	public String supprProduit() {
+		produitService.supprimer(produit);
+		return "produitParCategorie";
+	}
+	
+	public String modifProduit() {
+		produitService.modifier(produit);
+		return "produitParCategorie";
 	}
 
 }

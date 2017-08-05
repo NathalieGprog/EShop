@@ -33,14 +33,14 @@
 
 
 			<p:outputLabel for="cat" value="Catégorie : " />
-			<p:selectOneMenu id="cat" value="#{categorieMB.categorie.nomCategorie}">
-				<f:selectItem itemLabel="Choisir une catégorie" itemValue="" />
-				<f:selectItems value="#{categorieMB.lCategories}" />
+			<p:selectOneMenu id="cat" value="#{categorieMB.categorie}" >
+				<f:selectItems value="#{categorieMB.lCategories}" var="c"
+					itemLabel="#{c.nomCategorie}" itemValue="#{c}" />
 			</p:selectOneMenu>
 
 		</h:panelGrid>
 
-		<p:commandButton value="ajouter" action="#{produitMB.ajouterProduit}" />
+		<p:commandButton value="ajouter" action="#{produitMB.ajouterProduit}" update="@all"/>
 
 	</h:form>
 
