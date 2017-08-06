@@ -2,6 +2,7 @@ package fr.adaming.ManagedBean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -12,6 +13,7 @@ import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
 import fr.adaming.service.CategorieService;
 import fr.adaming.service.IGeneriqueService;
+import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "produitMB")
 @RequestScoped
@@ -26,9 +28,10 @@ public class ProduitManagedBean implements Serializable {
 	private Categorie categorie;
 	private List<Produit> lProduits;
 	private List<Categorie> lCategorie;
+	Map<Produit,Categorie> mapProduitCat;
 
 	@ManagedProperty(value = "#{produitServiceBean}")
-	private IGeneriqueService<Produit> produitService;
+	private IProduitService produitService;
 
 //	private IGeneriqueService<Categorie> categorieService = new CategorieService();
 	/**
@@ -42,6 +45,7 @@ public class ProduitManagedBean implements Serializable {
 	@PostConstruct // la méthode sera exécutée après
 	public void init() {
 		this.lProduits = (List<Produit>) produitService.obtenirTous();
+		this.mapProduitCat = produitService.obtenirCategorieDuProduit();
 //		this.lCategorie = (List<Categorie>) categorieService.obtenirTous();
 	}
 	/*************************************************
@@ -52,7 +56,7 @@ public class ProduitManagedBean implements Serializable {
 	 * @param produitService
 	 *            the produitService to set
 	 */
-	public void setProduitService(IGeneriqueService<Produit> produitService) {
+	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
 
@@ -140,6 +144,11 @@ public class ProduitManagedBean implements Serializable {
 	public String modifProduit() {
 		produitService.modifier(produit);
 		return "produitParCategorie";
+	}
+	
+	public String obtenirCategorieDuProduitAffche(){
+		mapProduitCat = produitService.obtenirCategorieDuProduit();
+		return "test";
 	}
 
 }

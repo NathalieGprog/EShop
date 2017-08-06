@@ -2,12 +2,14 @@ package fr.adaming.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IGeneriqueDao;
+import fr.adaming.dao.IProduitDao;
 import fr.adaming.dao.ProduitDaoImpl;
 import fr.adaming.entite.Categorie;
 import fr.adaming.entite.Produit;
@@ -17,7 +19,7 @@ import fr.adaming.entite.Produit;
 public class ProduitService implements IProduitService {
 
 	@Autowired
-	private IGeneriqueDao<Produit> produitDaoImpl;
+	private IProduitDao produitDaoImpl;
 	/**
 	 * @param produitDao the produitDao to set
 	 */
@@ -70,6 +72,12 @@ public class ProduitService implements IProduitService {
 		}else{
 		return null;
 		}
+	}
+	
+	@Override
+	public Map<Produit,Categorie> obtenirCategorieDuProduit(){
+		return produitDaoImpl.obtenirCategorieDuProduit();
+		
 	}
 
 
