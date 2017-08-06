@@ -42,27 +42,6 @@ public class ProduitDaoImpl implements IProduitDao {
 		List<Produit> listeProduit = query.list();
 		return listeProduit;
 	}
-	
-	public Map<Produit,Categorie> obtenirCategorieDuProduit() {
-		Session s = sf.getCurrentSession();
-		String req = "FROM Produit";
-		Query query = s.createQuery(req);
-		List<Produit> listeProduits = query.list();
-		
-		Map<Produit,Categorie> listeProduit =new HashMap<Produit,Categorie>();
-
-		//Iterator li = query.iterate();
-		
-         while (query.iterate().hasNext()) {
-             Produit produit = new Produit();
-             produit = (Produit) query.iterate();
-             System.out.println(produit);
-             Categorie categorie = produit.getCategorie();
-             System.out.println(categorie);
-             listeProduit.put(produit, categorie);
-         }//end while 
- 		return listeProduit;
-	}
 
 	@Override
 	public void modifier(Produit produit) {
@@ -82,4 +61,42 @@ public class ProduitDaoImpl implements IProduitDao {
 		return (Produit) s.get(Produit.class, id);
 	}
 
+	
+	public Map<Produit,Categorie> obtenirCategorieDuProduit() {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Produit";
+		Query query = s.createQuery(req);
+		List<Produit> listeProduits = query.list();
+		
+		Map<Produit,Categorie> listeProduit =new HashMap<Produit,Categorie>();
+
+		
+         while (query.iterate().hasNext()) {
+             Produit produit = new Produit();
+             
+             produit = (Produit) query.iterate();
+
+             Categorie categorie = produit.getCategorie();
+
+             listeProduit.put(produit, categorie);
+         }//end while 
+ 		return listeProduit;
+		
+	}
+	
+	public int obtenirCleEtrangere(int id){
+		Session s = sf.getCurrentSession();
+		String req2 = "SELECT idCategorie FROM Produit WHERE id=:idProduit";
+		Query query2 = s.createQuery(req2);
+		return (int) query2.uniqueResult();
+	}
+	
+	public List<Produit> obtenirProduitParCategorie(){
+		Session s = sf.getCurrentSession();
+		String req3 = "SELECT p FROM Produit AS p WHERE p.id_cat = pIdCat";
+		Query query = s.createQuery(req3);
+		@SuppressWarnings("unchecked")
+		List<Produit> listeProduit = query.list();
+		return listeProduit;
+	}
 }
